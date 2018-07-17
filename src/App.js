@@ -9,7 +9,7 @@ class App extends Component {
       <div className="App">
         {/* <img src={logo} alt=""/> */}
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          ScoreBoard App
         </p>
         <Scoreboard/>
       </div>

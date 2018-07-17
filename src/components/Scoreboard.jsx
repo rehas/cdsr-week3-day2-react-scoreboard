@@ -1,17 +1,24 @@
 import React, { PureComponent } from 'react';
 import Player from './Player'
 import '../styles/Scoreboard.css'
+import AddPlayer from './AddPlayer';
 
 class Scoreboard extends PureComponent {
   state = {
     players : [
-      {name: 'Munish',
-      score : 5,
-    },
-    {name : 'Jackson',
-    score : 25
-  },
-],
+      {
+        name: 'Munish',
+        score : 5,
+      },
+      {
+        name : 'Jackson',
+        score : 25
+      },
+      {
+        name : 'Michael',
+        score : 23
+      },
+    ],
 }
 
 renderPlayers(players){
@@ -77,6 +84,17 @@ decrementScore = (playerName) => {
   )
 }
 
+addPlayer = (name) => {
+  const player = {
+    id: Math.round(Math.random()*100000),
+    name,
+    score: 0
+  }
+  this.setState({
+    players: this.state.players.concat(player)
+  })
+}
+
 render() {
   console.log(this.state);
   
@@ -85,6 +103,7 @@ render() {
     <ul>
     {this.renderPlayers(this.state.players.sort((a,b)=>b.score- a.score))}
     </ul>
+    <AddPlayer addPlayer = {this.addPlayer}/>
     </div>
   );
 }
