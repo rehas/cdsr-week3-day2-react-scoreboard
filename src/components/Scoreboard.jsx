@@ -86,7 +86,6 @@ decrementScore = (playerName) => {
 
 addPlayer = (name) => {
   const player = {
-    id: Math.round(Math.random()*100000),
     name,
     score: 0
   }
