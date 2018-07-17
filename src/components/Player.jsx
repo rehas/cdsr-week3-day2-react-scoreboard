@@ -1,49 +1,28 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types'
+import '../styles/Player.css'
+import PlusButton from './PlusButton';
 
 class Player extends PureComponent{
     static propTypes = {
-        name : PropTypes.string.isRequired
+        name : PropTypes.string.isRequired,
+        score : PropTypes.number.isRequired,
+        onClick : PropTypes.func.isRequired,
+        onDecrementClick : PropTypes.func.isRequired,
     }
-    state = {
-        score: 0
-    }
-
-    incrementScore(){
-        console.log(this, 'this in incerementScore');
-        // this.setState({
-        //     score: this.state.score +1,
-        // });
-        this.setState((prevState, props)=>{
-            console.log("PrevSate, props")
-            console.log(prevState, props)
-            return {score : prevState.score +1}
-        } )
-    }
-
-    decrementScore(){
-        console.log(this, 'this in incerementScore');
-        // this.setState({
-        //     score: this.state.score -1,
-        // });
-
-        this.setState((prevState, props)=>{
-            console.log("PrevSate, props")
-            console.log(prevState, props)
-            return {score : prevState.score -1}
-        } )
-    }
-
+   
+    
+    
+    
+    
     render(){
         return (
-            <div>
-                <h2>{this.props.name}</h2>
-                <div>
-                    <span onClick={()=>this.decrementScore()}>Decrement Score</span>
-                        <b>Score is : {this.state.score}</b>
-                    <span onClick={()=>this.incrementScore()}>Increment Score</span>
-                </div>
-            </div>
+            <li className="player">
+            <span onClick={this.props.onDecrementClick}>Decrement Score</span>
+                <p className="name"> {this.props.name}</p>
+                <p className= "score">Score : {this.props.score}</p>
+                <PlusButton onClick={this.props.onClick}/>
+            </li>
         )
     }
 }
