@@ -13,6 +13,9 @@ export default class AddPlayer extends PureComponent {
         event.preventDefault()
         console.log(`Submitted form, ${event}`, event)
         console.log(this.state.name)
+        if(this.state.name.length < 2){
+            return
+        }
         this.props.addPlayer(this.state.name)
         this.setState({
             name : ''
